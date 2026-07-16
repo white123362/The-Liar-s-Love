@@ -1,444 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>向日葵之影</title>
-    <style>
-        body {
-            background: #0a0a0a;
-            color: #ddd;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 16px;
-        }
-        .box {
-            background: #121212;
-            padding: 24px;
-            border-radius: 16px;
-            max-width: 450px;
-            width: 100%;
-            border: 1px solid #2a2a2a;
-        }
-        h1 {
-            color: #f5c842;
-            text-align: center;
-            font-size: 22px;
-        }
-        .scene {
-            background: #0a0a18;
-            padding: 16px;
-            border-radius: 12px;
-            border-left: 3px solid #f5c842;
-            margin: 16px 0;
-            line-height: 1.8;
-            font-size: 15px;
-            min-height: 120px;
-        }
-        .highlight {
-            color: #f5c842;
-        }
-        .danger {
-            color: #ff6b6b;
-        }
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin: 12px 0;
-        }
-        .options button {
-            background: #1a1a2e;
-            border: 1px solid #2a3a5e;
-            color: #eee;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: left;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .options button:hover {
-            border-color: #f5c842;
-            background: #252545;
-        }
-        .options button:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-        .msg {
-            background: #0a0a18;
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid #1a2a3a;
-            font-size: 13px;
-            color: #a8d8ea;
-            margin: 12px 0;
-            min-height: 40px;
-        }
-        .btn-next {
-            background: #f5c842;
-            border: none;
-            color: #1a1a2e;
-            padding: 12px;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-        }
-        .btn-next:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-        .btn-reset {
-            background: #1a1a2e;
-            border: 1px solid #2a2a2a;
-            color: #888;
-            padding: 10px;
-            border-radius: 20px;
-            font-size: 13px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-        }
-        .hidden {
-            display: none;
-        }
-        .image-box {
-            background: #0a0a14;
-            border: 1px dashed #2a3a5e;
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
-            margin: 12px 0;
-        }
-        .image-box img {
-            max-width: 100%;
-            border-radius: 8px;
-            max-height: 200px;
-        }
-        .image-box .cap {
-            color: #888;
-            font-size: 11px;
-            margin-top: 4px;
-        }
-        .ending {
-            text-align: center;
-            font-size: 38px;
-            padding: 16px 0 8px 0;
-        }
-        .ending-title {
-            text-align: center;
-            font-size: 20px;
-            color: #f5c842;
-        }
-        .ending-desc {
-            text-align: center;
-            font-size: 14px;
-            color: #aaa;
-            padding: 12px;
-            line-height: 1.8;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>向日葵之影</title>
+<style>
+body{background:#0a0a0a;color:#ddd;font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:16px;}
+.box{background:#121212;padding:24px;border-radius:16px;max-width:450px;width:100%;border:1px solid #2a2a2a;}
+h1{color:#f5c842;text-align:center;}
+.scene{background:#0a0a18;padding:16px;border-radius:12px;border-left:3px solid #f5c842;margin:16px 0;line-height:1.8;font-size:15px;min-height:120px;}
+.highlight{color:#f5c842;}
+.danger{color:#ff6b6b;}
+.options button{background:#1a1a2e;border:1px solid #2a3a5e;color:#eee;padding:12px;border-radius:10px;text-align:left;font-size:14px;cursor:pointer;width:100%;margin-bottom:6px;}
+.options button:hover{border-color:#f5c842;background:#252545;}
+.options button:disabled{opacity:0.4;cursor:not-allowed;}
+.msg{background:#0a0a18;padding:12px;border-radius:10px;border:1px solid #1a2a3a;font-size:13px;color:#a8d8ea;margin:12px 0;min-height:40px;}
+.btn-next{background:#f5c842;border:none;color:#1a1a2e;padding:12px;border-radius:30px;font-weight:bold;font-size:16px;cursor:pointer;width:100%;}
+.btn-next:disabled{opacity:0.3;cursor:not-allowed;}
+.btn-reset{background:#1a1a2e;border:1px solid #2a2a2a;color:#888;padding:10px;border-radius:20px;font-size:13px;cursor:pointer;width:100%;margin-top:10px;}
+.hidden{display:none;}
+.image-box{background:#0a0a14;border:1px dashed #2a3a5e;border-radius:12px;padding:12px;text-align:center;margin:12px 0;}
+.image-box img{max-width:100%;border-radius:8px;max-height:200px;}
+.image-box .cap{color:#888;font-size:11px;margin-top:4px;}
+</style>
 </head>
 <body>
 <div class="box">
-    <h1>🌻 向日葵之影</h1>
-    <div style="font-size:12px;color:#888;text-align:center;margin-bottom:12px;">第 <span id="chap">1</span> 章 · <span id="sname">审讯室</span></div>
-    <div id="scene" class="scene"></div>
-    <div id="imgBox" class="image-box hidden">
-        <img id="imgShow" src="72776.jpeg" alt="物证">
-        <div class="cap" id="imgCap">聊天记录截图</div>
-    </div>
-    <div id="options" class="options"></div>
-    <div id="msg" class="msg">💡 点击选项推进剧情</div>
-    <button id="nextBtn" class="btn-next" disabled>▶ 继续</button>
-    <button id="resetBtn" class="btn-reset">🔄 重新开始</button>
+<h1>Sunflower Shadow</h1>
+<div style="font-size:12px;color:#888;text-align:center;margin-bottom:12px;">Chapter <span id="chap">1</span> · <span id="sname">Interrogation</span></div>
+<div id="scene" class="scene"></div>
+<div id="imgBox" class="image-box hidden">
+<img id="imgShow" src="72776.jpeg" alt="evidence">
+<div class="cap" id="imgCap">Chat record screenshot</div>
+</div>
+<div id="options" class="options"></div>
+<div id="msg" class="msg">Choose an option to continue</div>
+<button id="nextBtn" class="btn-next" disabled>Continue</button>
+<button id="resetBtn" class="btn-reset">Restart</button>
 </div>
 
 <script>
-    var scenes = [
-        {
-            chap: 1,
-            name: '审讯室',
-            text: '审讯室只有一盏灯，照在画家脸上。<br><br>"季警官，我知道你在想什么。"<br>他把双手摊开："但你知道吗？<span class="danger">我坐在这里，不是因为被抓，是因为我想来。</span>"<br><br>他微笑："前三个审讯官都被我聊哭了。"',
-            img: null,
-            opts: [
-                { label: '🧠 "你是在测试我的心理承受力？"', next: 1, clue: null },
-                { label: '🔍 "你故意被抓，是为了传递某个信息。"', next: 1, clue: '画家自首动机' },
-                { label: '💬 "你提到前三个审讯官，是在威胁我？"', next: 1, clue: null },
-                { label: '🤫 "你坐在这里，是因为你无处可去。"', next: 1, clue: null }
-            ]
-        },
-        {
-            chap: 1,
-            name: '审讯室',
-            text: '你从档案袋里抽出一张照片，推到他面前。<br><br>"这张聊天记录截图，你认识吗？"<br><br>他的目光落在照片上，<span class="danger">瞳孔微微收缩</span>。<br><br>沉默。五秒钟的沉默。',
-            img: '72776.jpeg',
-            imgCap: '📱 案发现场手机里的聊天记录',
-            opts: [
-                { label: '📸 "你认识向日葵。"', next: 2, clue: '向日葵 - 画家认识' },
-                { label: '🤔 "你在犹豫要不要告诉我真相。"', next: 2, clue: null },
-                { label: '😤 "你怕这张照片。"', next: 2, clue: null },
-                { label: '🧩 "这张照片是你故意留下的。"', next: 2, clue: '照片是画家故意留的' }
-            ]
-        },
-        {
-            chap: 1,
-            name: '审讯室',
-            text: '他抬起头，眼神变了。<br><br>"你比他们聪明。"他说。<br><br>"<span class="highlight">向日葵……是我妹妹。</span>"<br><br>他低下头："我做的所有事，都是为了保护她。"<br><br><span style="color:#888;">你获得了关键线索：</span> <span class="highlight">向日葵 = 画家的妹妹</span>',
-            img: null,
-            opts: [],
-            endChapter: true,
-            nextChap: 2
-        },
-        {
-            chap: 2,
-            name: '档案室',
-            text: '你来到警局档案室，翻阅与"画家"相关的所有案件记录。<br><br>你发现一份被涂改过的档案——<br>上面写着：<span class="danger">"向日葵项目 · 已封存"</span><br><br>你注意到档案封面上有一个手写字母：<span class="highlight">S</span>',
-            img: null,
-            opts: [
-                { label: '📂 "S代表什么？向日葵的缩写？"', next: 4, clue: 'S - 向日葵缩写' },
-                { label: '🔍 "这份档案被人动过手脚。"', next: 4, clue: '档案被篡改' },
-                { label: '📝 "我要找到原始档案。"', next: 4, clue: null },
-                { label: '🧩 "S可能是某个人的名字缩写。"', next: 4, clue: null }
-            ]
-        },
-        {
-            chap: 2,
-            name: '档案室',
-            text: '你在档案柜底层发现一封匿名信。<br><br>信上写着：<br>"向日葵不是一个人，是一个代号。<br>真正的向日葵，藏在画里。"<br><br>没有署名。没有日期。',
-            img: null,
-            opts: [
-                { label: '📜 "这封信是画家写的。"', next: 5, clue: '匿名信 - 可能来自画家' },
-                { label: '🕵️ "有人在引导我的调查方向。"', next: 5, clue: '被引导的调查' },
-                { label: '🎨 "藏在画里……是指那幅失窃的画？"', next: 5, clue: '画作是关键' },
-                { label: '⚠️ "这封信可能是陷阱。"', next: 5, clue: null }
-            ]
-        },
-        {
-            chap: 2,
-            name: '档案室',
-            text: '你调出监控录像，发现案发当晚，<br>一个戴帽子的身影在画廊附近徘徊。<br><br>你放大画面——<br>他的口袋里露出一角<span class="highlight">黄色布料</span>。',
-            img: null,
-            opts: [],
-            endChapter: true,
-            nextChap: 3
-        },
-        {
-            chap: 3,
-            name: '咖啡馆',
-            text: '你根据线索找到一家叫"向日葵"的咖啡馆。<br><br>店员看到你进来，表情有些紧张。<br><br>"你是……来找人的吗？"她问。<br><br><span style="color:#888;">你注意到她手腕上有一道旧伤疤。</span>',
-            img: null,
-            opts: [
-                { label: '☕ "我听说这里和向日葵有关。"', next: 7, clue: '咖啡馆与向日葵有关' },
-                { label: '🔍 "你认识画家吗？"', next: 7, clue: null },
-                { label: '📸 "这张照片里的聊天记录，你见过吗？"', next: 7, clue: null },
-                { label: '😐 "你在害怕什么？"', next: 7, clue: '店员在害怕' }
-            ]
-        },
-        {
-            chap: 3,
-            name: '咖啡馆',
-            text: '店员沉默了很久。<br><br>"那幅画……是画家最后的一幅作品。"<br>"画的是一个女孩，站在向日葵田里。"<br><br>她低声说："那个女孩，<span class="danger">是他死去的妹妹。</span>"',
-            img: null,
-            opts: [
-                { label: '🖼️ "那幅画现在在哪里？"', next: 8, clue: '最后一幅画的下落' },
-                { label: '💔 "他妹妹是怎么死的？"', next: 8, clue: '妹妹死因' },
-                { label: '🔍 "你和他是什么关系？"', next: 8, clue: null },
-                { label: '📝 "画里藏着什么？"', next: 8, clue: '画中藏有秘密' }
-            ]
-        },
-        {
-            chap: 3,
-            name: '咖啡馆',
-            text: '店员带你去咖啡馆后院。<br><br>墙上挂着一幅褪色的画——<br>画里，一个女孩站在向日葵田里，<br>手里拿着一封信。<br><br>你凑近看，信上写着：<span class="highlight">"S.O.S."</span>',
-            img: null,
-            opts: [],
-            endChapter: true,
-            nextChap: 4
-        },
-        {
-            chap: 4,
-            name: '废弃画廊',
-            text: '你来到那幅画所在的废弃画廊。<br><br>空气中弥漫着灰尘和松节油的气味。<br>墙上挂满了一幅幅画像——<br>全是同一个人：<span class="highlight">向日葵田里的女孩</span>。<br><br>你数了数：<span class="danger">九幅画。</span>',
-            img: null,
-            opts: [
-                { label: '🎨 "九幅画……代表什么？"', next: 10, clue: '九幅画 - 关键数字' },
-                { label: '🔍 "画里的女孩就是向日葵。"', next: 10, clue: '女孩=向日葵' },
-                { label: '📸 "我要拍下这些画。"', next: 10, clue: null },
-                { label: '🧩 "九可能代表某个日期。"', next: 10, clue: '9可能是日期' }
-            ]
-        },
-        {
-            chap: 4,
-            name: '废弃画廊',
-            text: '你发现最后一幅画的背面有一行小字：<br><br>"向日葵不会低头，直到太阳下山。"<br><br>你突然意识到——<br>这句话和你的聊天记录截图里的一句话<span class="highlight">一模一样</span>。',
-            img: '72776.jpeg',
-            imgCap: '📱 聊天记录里的同一句话',
-            opts: [
-                { label: '📝 "这句话是暗号。"', next: 11, clue: '暗号确认' },
-                { label: '🔗 "聊天记录和画作有直接关联。"', next: 11, clue: '画与聊天记录关联' },
-                { label: '🧠 "画家在通过画作传递信息。"', next: 11, clue: '画作传递信息' },
-                { label: '💀 "这句话是遗言。"', next: 11, clue: null }
-            ]
-        },
-        {
-            chap: 4,
-            name: '废弃画廊',
-            text: '你听到身后传来脚步声。<br><br>你转身——<br>一个黑影站在门口。<br><br>"你不该来这里。"那个声音说。<br><br><span style="color:#888;">你认出了这个声音：是画家。</span>',
-            img: null,
-            opts: [],
-            endChapter: true,
-            nextChap: 5
-        },
-        {
-            chap: 5,
-            name: '最终审讯',
-            text: '你和画家在画廊里对峙。<br><br>"你妹妹的死，和那幅画有关。"你说。<br><br>他沉默了很久。<br><br>"她不是死了。"他说。<span class="danger">"她是被带走的。"</span>',
-            img: null,
-            opts: [
-                { label: '🚨 "被谁带走的？"', next: 13, clue: '妹妹被带走' },
-                { label: '📂 "你一直在找她。"', next: 13, clue: '画家在找妹妹' },
-                { label: '🧩 "所以你和警方合作，是为了找到她。"', next: 13, clue: '画家与警方合作' },
-                { label: '💔 "她是你唯一的亲人。"', next: 13, clue: null }
-            ]
-        },
-        {
-            chap: 5,
-            name: '最终审讯',
-            text: '他抬起头，眼眶发红。<br><br>"我是为了找她，才做了那些事。"<br>"警方查不到她的下落——<span class="highlight">但我能。</span>"<br><br>他递给你一张纸条，<br>上面写着：<span class="danger">"SUNFLOWER"</span>',
-            img: null,
-            opts: [
-                { label: '🧩 "SUNFLOWER是坐标。"', next: 14, clue: '坐标线索' },
-                { label: '📝 "这是她最后留下的信息。"', next: 14, clue: '妹妹的最后信息' },
-                { label: '🔍 "你已经找到她了，对吗？"', next: 14, clue: '画家已找到妹妹' },
-                { label: '💡 "SUNFLOWER是暗语。"', next: 14, clue: '暗语' }
-            ]
-        },
-        {
-            chap: 5,
-            name: '最终审讯',
-            text: '他点了点头。<br><br>"我找到了她。"<br>"但她已经不记得我了。"<br><br>他闭上眼："这就是为什么我来自首。"<br>"我想让她知道……<span class="highlight">我没有放弃过她。</span>"',
-            img: null,
-            opts: [],
-            endChapter: true,
-            isEnding: true
-        }
-    ];
+var scenes = [
+{chap:1,name:'Interrogation',text:'The interrogation room is dimly lit.<br><br>"Officer Ji, I know what you are thinking."<br>He spread his hands: "But you know? <span class=danger>I am here not because I was caught, but because I wanted to come.</span>"<br><br>He smiled: "The first three interrogators all cried after talking to me."',img:null,opts:[{label:'Are you testing my psychological endurance?',next:1,clue:null},{label:'You were caught on purpose to send a message.',next:1,clue:'Painter motive'},{label:'Are you threatening me by mentioning the first three interrogators?',next:1,clue:null},{label:'You are here because you have nowhere else to go.',next:1,clue:null}]},
+{chap:1,name:'Interrogation',text:'You take a photo out of the file and push it in front of him.<br><br>"Do you recognize this chat record screenshot?"<br><br>His eyes fell on the photo, <span class=danger>pupils slightly contracted</span>.<br><br>Silence. Five seconds of silence.',img:'72776.jpeg',imgCap:'Chat record from the crime scene',opts:[{label:'You know Sunflower.',next:2,clue:'Painter knows Sunflower'},{label:'You are hesitating whether to tell me the truth.',next:2,clue:null},{label:'You are afraid of this photo.',next:2,clue:null},{label:'You left this photo on purpose.',next:2,clue:'Photo left on purpose'}]},
+{chap:1,name:'Interrogation',text:'He looked up, his eyes changed.<br><br>"You are smarter than them." He said.<br><br>"<span class=highlight>Sunflower... is my sister.</span>"<br><br>He lowered his head: "Everything I did was to protect her."<br><br><span style=color:#888;>You got a key clue:</span> <span class=highlight>Sunflower = Painter sister</span>',img:null,opts:[],endChapter:true,nextChap:2},
+{chap:2,name:'Archive',text:'You go to the police archive and look through all case records related to the painter.<br><br>You find an altered file --<br>It says: <span class=danger>"Sunflower Project · Sealed"</span><br><br>You notice a handwritten letter on the cover: <span class=highlight>S</span>',img:null,opts:[{label:'Does S stand for Sunflower?',next:4,clue:'S - Sunflower abbreviation'},{label:'This file has been tampered with.',next:4,clue:'File tampered'},{label:'I need to find the original file.',next:4,clue:null},{label:'S might be someone name initial.',next:4,clue:null}]},
+{chap:2,name:'Archive',text:'You find an anonymous letter at the bottom of the filing cabinet.<br><br>The letter says:<br>"Sunflower is not a person, it is a code name.<br>The real Sunflower is hidden in the painting."<br><br>No signature. No date.',img:null,opts:[{label:'This letter was written by the painter.',next:5,clue:'Anonymous letter from painter'},{label:'Someone is guiding my investigation.',next:5,clue:'Guided investigation'},{label:'Hidden in the painting... means that stolen painting?',next:5,clue:'Painting is key'},{label:'This letter might be a trap.',next:5,clue:null}]},
+{chap:2,name:'Archive',text:'You pull up the surveillance footage and find that on the night of the incident,<br>a figure in a hat was lingering near the gallery.<br><br>You zoom in --<br>A corner of <span class=highlight>yellow fabric</span> is showing from his pocket.',img:null,opts:[],endChapter:true,nextChap:3},
+{chap:3,name:'Cafe',text:'You follow the clue and find a cafe called Sunflower.<br><br>The staff looks nervous when she sees you.<br><br>"Are you... looking for someone?" She asks.<br><br><span style=color:#888;>You notice an old scar on her wrist.</span>',img:null,opts:[{label:'I heard this place is related to Sunflower.',next:7,clue:'Cafe related to Sunflower'},{label:'Do you know the painter?',next:7,clue:null},{label:'Have you seen this chat record screenshot?',next:7,clue:null},{label:'What are you afraid of?',next:7,clue:'Staff is afraid'}]},
+{chap:3,name:'Cafe',text:'The staff was silent for a long time.<br><br>"That painting... is the painter last work."<br>"It shows a girl standing in a sunflower field."<br><br>She whispered: "That girl, <span class=danger>is his deceased sister.</span>"',img:null,opts:[{label:'Where is that painting now?',next:8,clue:'Location of last painting'},{label:'How did his sister die?',next:8,clue:'Sister cause of death'},{label:'What is your relationship with him?',next:8,clue:null},{label:'What is hidden in the painting?',next:8,clue:'Secret in painting'}]},
+{chap:3,name:'Cafe',text:'The staff takes you to the backyard of the cafe.<br><br>There is a faded painting on the wall --<br>In it, a girl stands in a sunflower field,<br>holding a letter in her hand.<br><br>You lean in and see the letter says: <span class=highlight>"S.O.S."</span>',img:null,opts:[],endChapter:true,nextChap:4},
+{chap:4,name:'Gallery',text:'You arrive at the abandoned gallery where the painting is located.<br><br>The air is filled with dust and turpentine.<br>The walls are covered with portraits --<br>all of the same person: <span class=highlight>the girl in the sunflower field</span>.<br><br>You count: <span class=danger>nine paintings.</span>',img:null,opts:[{label:'Nine paintings... what do they represent?',next:10,clue:'Nine paintings - key number'},{label:'The girl in the painting is Sunflower.',next:10,clue:'Girl is Sunflower'},{label:'I need to take photos of these paintings.',next:10,clue:null},{label:'Nine might represent a date.',next:10,clue:'9 might be a date'}]},
+{chap:4,name:'Gallery',text:'You find a line of small text on the back of the last painting:<br><br>"Sunflower does not bow until the sun goes down."<br><br>You suddenly realize --<br>this sentence is <span class=highlight>exactly the same</span> as one in your chat record screenshot.',img:'72776.jpeg',imgCap:'The same sentence in the chat record',opts:[{label:'This sentence is a code.',next:11,clue:'Code confirmed'},{label:'The chat record and the painting are directly connected.',next:11,clue:'Chat and painting linked'},{label:'The painter is sending messages through his paintings.',next:11,clue:'Paintings send messages'},{label:'This sentence is a farewell.',next:11,clue:null}]},
+{chap:4,name:'Gallery',text:'You hear footsteps behind you.<br><br>You turn around --<br>a dark figure stands at the door.<br><br>"You should not have come here." The voice says.<br><br><span style=color:#888;>You recognize the voice: it is the painter.</span>',img:null,opts:[],endChapter:true,nextChap:5},
+{chap:5,name:'Final',text:'You confront the painter in the gallery.<br><br>"Your sister death is related to that painting." You say.<br><br>He is silent for a long time.<br><br>"She is not dead." He says. <span class=danger>"She was taken away."</span>',img:null,opts:[{label:'Taken by whom?',next:13,clue:'Sister taken'},{label:'You have been looking for her.',next:13,clue:'Painter looking for sister'},{label:'So you cooperated with the police to find her.',next:13,clue:'Painter cooperated'},{label:'She is your only family.',next:13,clue:null}]},
+{chap:5,name:'Final',text:'He looks up, eyes red.<br><br>"I did all those things to find her."<br>"The police cannot find her whereabouts -- <span class=highlight>but I can.</span>"<br><br>He hands you a note,<br>with the word: <span class=danger>"SUNFLOWER"</span>',img:null,opts:[{label:'SUNFLOWER is coordinates.',next:14,clue:'Coordinates'},{label:'This is the last message she left.',next:14,clue:'Last message'},{label:'You have already found her, right?',next:14,clue:'Painter found sister'},{label:'SUNFLOWER is code.',next:14,clue:'Code'}]},
+{chap:5,name:'Final',text:'He nods.<br><br>"I found her."<br>"But she no longer remembers me."<br><br>He closes his eyes: "That is why I turned myself in."<br>"I want her to know... <span class=highlight>I never gave up on her.</span>"',img:null,opts:[],endChapter:true,isEnding:true}
+];
 
-    var endings = [
-        { title: '🌻 向日葵重逢', desc: '你帮助画家找到了妹妹。她虽然失忆，但看到那幅画时，流泪了。画家决定自首，用余生弥补过失。' },
-        { title: '🕯️ 未解之谜', desc: '画家在审讯中突然沉默，拒绝再说话。你永远不知道向日葵是谁。案件不了了之。' },
-        { title: '⚖️ 真相大白', desc: '你查出了画家背后的组织，揭开了向日葵计划的真相。画家被赦免部分罪行，但失去了自由。' },
-        { title: '💀 永远的向日葵', desc: '你发现向日葵并不是画家的妹妹，而是他自己。他一直在寻找自己。最终，他消失了。' }
-    ];
+var endings = [
+{title:'Sunflower Reunion',desc:'You helped the painter find his sister. Although she has amnesia, she cried when she saw the painting. The painter decided to turn himself in and make up for his mistakes with the rest of his life.'},
+{title:'Unsolved Mystery',desc:'The painter suddenly fell silent during the interrogation and refused to speak again. You will never know who Sunflower is.'},
+{title:'Truth Revealed',desc:'You uncovered the organization behind the painter and the truth of the Sunflower Project. The painter was pardoned for some of his crimes, but lost his freedom.'},
+{title:'Eternal Sunflower',desc:'You discovered that Sunflower is not the painter sister, but himself. He has been searching for himself. In the end, he disappeared.'}
+];
 
-    var state = { idx: 0, clues: [] };
+var state = {idx:0, clues:[]};
 
-    function render() {
-        var s = scenes[state.idx];
-        if (!s) return;
-        document.getElementById('chap').textContent = s.chap;
-        document.getElementById('sname').textContent = s.name;
-        document.getElementById('scene').innerHTML = s.text;
+function render(){
+var s=scenes[state.idx]; if(!s)return;
+document.getElementById('chap').textContent=s.chap;
+document.getElementById('sname').textContent=s.name;
+document.getElementById('scene').innerHTML=s.text;
+var ib=document.getElementById('imgBox'), ish=document.getElementById('imgShow'), ic=document.getElementById('imgCap');
+if(s.img){ib.classList.remove('hidden');ish.src=s.img;ic.textContent=s.imgCap||'Key evidence';}else{ib.classList.add('hidden');}
+var od=document.getElementById('options'); od.innerHTML=''; var nb=document.getElementById('nextBtn');
+if(s.opts&&s.opts.length>0){
+s.opts.forEach(function(o,i){var b=document.createElement('button');b.textContent=o.label;b.onclick=function(){pick(i);};od.appendChild(b);});
+nb.disabled=true; document.getElementById('msg').innerHTML='Choose an option to continue.';
+}else{
+if(s.isEnding){showEnding();return;}
+if(s.endChapter){document.getElementById('msg').innerHTML='<span style="color:#4caf50;">Chapter complete!</span> Click Continue to go to the next chapter.';nb.disabled=false;nb.textContent='Continue';nb.onclick=goNextChapter;}else{nb.disabled=true;}
+}
+document.getElementById('clueCount').textContent=state.clues.length;
+}
 
-        var imgBox = document.getElementById('imgBox');
-        var imgShow = document.getElementById('imgShow');
-        var imgCap = document.getElementById('imgCap');
-        if (s.img) {
-            imgBox.classList.remove('hidden');
-            imgShow.src = s.img;
-            imgCap.textContent = s.imgCap || '📱 关键物证';
-        } else {
-            imgBox.classList.add('hidden');
-        }
+function pick(i){
+var s=scenes[state.idx], o=s.opts[i]; if(!o)return;
+var bs=document.querySelectorAll('#options button'); bs.forEach(function(b){b.disabled=true;});
+if(o.clue){if(state.clues.indexOf(o.clue)===-1){state.clues.push(o.clue);document.getElementById('msg').innerHTML='<span style="color:#4caf50;">Clue obtained: '+o.clue+'</span>';}}
+if(o.next!==undefined){state.idx=o.next;setTimeout(function(){render();},400);}
+document.getElementById('clueCount').textContent=state.clues.length;
+}
 
-        var optDiv = document.getElementById('options');
-        optDiv.innerHTML = '';
-        var nextBtn = document.getElementById('nextBtn');
-        if (s.opts && s.opts.length > 0) {
-            s.opts.forEach(function(o, i) {
-                var btn = document.createElement('button');
-                btn.textContent = o.label;
-                btn.onclick = function() { pickOption(i); };
-                optDiv.appendChild(btn);
-            });
-            nextBtn.disabled = true;
-            document.getElementById('msg').innerHTML = '💡 选择一个选项推进剧情';
-        } else {
-            if (s.isEnding) {
-                showEnding();
-                return;
-            }
-            if (s.endChapter) {
-                document.getElementById('msg').innerHTML = '🎉 <span style="color:#4caf50;">章节完成！</span> 点击"继续"进入下一章';
-                nextBtn.disabled = false;
-                nextBtn.textContent = '▶ 进入下一章';
-                nextBtn.onclick = goNextChapter;
-            } else {
-                nextBtn.disabled = true;
-            }
-        }
-        document.getElementById('clueCount').textContent = state.clues.length;
-    }
+function goNextChapter(){
+var s=scenes[state.idx];
+if(s&&s.nextChap!==undefined){
+var ni=state.idx+1;
+while(ni<scenes.length&&scenes[ni].chap===s.chap){ni++;}
+if(ni<scenes.length){state.idx=ni;render();}else{showEnding();}
+}
+document.getElementById('nextBtn').disabled=true;
+}
 
-    function pickOption(idx) {
-        var s = scenes[state.idx];
-        var o = s.opts[idx];
-        if (!o) return;
-        var btns = document.querySelectorAll('#options button');
-        btns.forEach(function(b) { b.disabled = true; });
-        if (o.clue) {
-            if (state.clues.indexOf(o.clue) === -1) {
-                state.clues.push(o.clue);
-                document.getElementById('msg').innerHTML = '🔍 <span style="color:#4caf50;">获得线索：' + o.clue + '</span>';
-            }
-        }
-        if (o.next !== undefined) {
-            state.idx = o.next;
-            setTimeout(function() { render(); }, 400);
-        }
-        document.getElementById('clueCount').textContent = state.clues.length;
-    }
+function showEnding(){
+var c=state.clues.length, ei=c>=6?0:(c>=4?2:(c>=2?1:3)), e=endings[ei];
+document.getElementById('scene').innerHTML='<div style="text-align:center;font-size:40px;padding:16px 0;">'+e.title.split(' ')[0]+'</div><div style="text-align:center;font-size:20px;color:#f5c842;">'+e.title+'</div><div style="text-align:center;font-size:14px;color:#aaa;padding:12px;line-height:1.8;">'+e.desc+'</div>';
+document.getElementById('options').innerHTML='';
+document.getElementById('nextBtn').disabled=true; document.getElementById('nextBtn').textContent='End';
+document.getElementById('msg').innerHTML='<span style="color:#4caf50;">Game Over</span> Thank you for playing Sunflower Shadow';
+document.getElementById('imgBox').classList.add('hidden');
+document.getElementById('chap').textContent='End';
+document.getElementById('sname').textContent='Final';
+}
 
-    function goNextChapter() {
-        var s = scenes[state.idx];
-        if (s && s.nextChap !== undefined) {
-            var ni = state.idx + 1;
-            while (ni < scenes.length && scenes[ni].chap === s.chap) { ni++; }
-            if (ni < scenes.length) { state.idx = ni; render(); }
-            else { showEnding(); }
-        }
-        document.getElementById('nextBtn').disabled = true;
-    }
-
-    function showEnding() {
-        var c = state.clues.length;
-        var ei = c >= 6 ? 0 : (c >= 4 ? 2 : (c >= 2 ? 1 : 3));
-        var e = endings[ei];
-        document.getElementById('scene').innerHTML = '<div style="text-align:center;font-size:40px;padding:16px 0;">' + e.title.split(' ')[0] + '</div><div style="text-align:center;font-size:20px;color:#f5c842;">' + e.title + '</div><div style="text-align:center;font-size:14px;color:#aaa;padding:12px;line-height:1.8;">' + e.desc + '</div>';
-        document.getElementById('options').innerHTML = '';
-        document.getElementById('nextBtn').disabled = true;
-        document.getElementById('nextBtn').textContent = '🔚 已完结';
-        document.getElementById('msg').innerHTML = '🏁 <span style="color:#4caf50;">游戏结束</span> 感谢你完成"向日葵之影"';
-        document.getElementById('imgBox').classList.add('hidden');
-        document.getElementById('chap').textContent = '结';
-        document.getElementById('sname').textContent = '终章';
-    }
-
-    function resetGame() {
-        state.idx = 0;
-        state.clues = [];
-        document.getElementById('nextBtn').textContent = '▶ 继续';
-        document.getElementById('nextBtn').onclick = null;
-        render();
-    }
-
-    document.getElementById('resetBtn').onclick = resetGame;
-    render();
+function resetGame(){state.idx=0;state.clues=[];document.getElementById('nextBtn').textContent='Continue';document.getElementById('nextBtn').onclick=null;render();}
+document.getElementById('resetBtn').onclick=resetGame;
+render();
 </script>
 </body>
 </html>
